@@ -10,6 +10,7 @@ import Layout from "./components/Layout";
 import AssistantPage from "./pages/AssistantPage";
 import SchedulePage from "./pages/SchedulePage";
 import NotesPage from "./pages/NotesPage";
+import LoginPage from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +21,7 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
           <Route path="/" element={<Layout />}>
             <Route index element={<Index />} />
             <Route path="assistant" element={<AssistantPage />} />

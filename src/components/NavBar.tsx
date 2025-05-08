@@ -1,11 +1,24 @@
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Button } from "@/components/ui/button";
-import { Search, Bell, User } from 'lucide-react';
+import { Search, Bell, User, LogOut } from 'lucide-react';
 import { Input } from "@/components/ui/input";
 
 const NavBar: React.FC = () => {
+  const navigate = useNavigate();
+  // In a real app, you would check if the user is logged in
+  const isLoggedIn = true; // This is a placeholder
+  
+  const handleAuthAction = () => {
+    if (isLoggedIn) {
+      // Logout logic would go here
+      navigate('/login');
+    } else {
+      navigate('/login');
+    }
+  };
+
   return (
     <header className="border-b border-slate-200 bg-white dark:bg-slate-950 dark:border-slate-800 sticky top-0 z-40">
       <div className="container flex items-center justify-between h-16 px-4 md:px-6">
@@ -37,9 +50,20 @@ const NavBar: React.FC = () => {
           <Button variant="ghost" size="icon" className="hidden md:flex">
             <Search className="h-5 w-5 md:hidden" />
           </Button>
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <User className="h-5 w-5" />
-          </Button>
+          {isLoggedIn ? (
+            <Button variant="ghost" size="icon" className="rounded-full">
+              <User className="h-5 w-5" />
+            </Button>
+          ) : (
+            <Button onClick={handleAuthAction}>
+              Login
+            </Button>
+          )}
+          {isLoggedIn && (
+            <Button variant="ghost" size="icon" onClick={handleAuthAction}>
+              <LogOut className="h-5 w-5" />
+            </Button>
+          )}
         </div>
       </div>
     </header>
