@@ -11,6 +11,7 @@ import AssistantPage from "./pages/AssistantPage";
 import SchedulePage from "./pages/SchedulePage";
 import NotesPage from "./pages/NotesPage";
 import LoginPage from "./pages/LoginPage";
+import DeadlinesPage from "./pages/DeadlinesPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
             <Route path="assistant" element={<AssistantPage />} />
             <Route path="schedule" element={<SchedulePage />} />
             <Route path="notes" element={<NotesPage />} />
+            <Route path="deadlines" element={<DeadlinesPage />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           </Route>
           <Route path="*" element={<NotFound />} />
